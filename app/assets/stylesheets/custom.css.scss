@@ -139,4 +139,9 @@
   background: #000;
   color: #fff !important;
   padding-bottom: 5px;
+  z-index: 1;
+}
+
+.datepicker {
+  z-index: 2;
 }

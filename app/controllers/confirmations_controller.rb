@@ -3,7 +3,7 @@ class ConfirmationsController < Milia::ConfirmationsController
   def update
     if @confirmable.attempt_set_password(user_params)
 
-      self.resource = resource.class.confirm_by_token(params[:confirmation_token])
+      self.resource = resource_class.confirm_by_token(params[:confirmation_token])
       yield resource if block_given?
 
       if resource.errors.empty?
@@ -62,7 +62,7 @@ class ConfirmationsController < Milia::ConfirmationsController
   private
   
   def set_confirmable()
-    @confirmable = User.find_or_intialize_with_error_by(:confirmation_token, params[:confirmation_token])
+    @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
 
   end
 end
